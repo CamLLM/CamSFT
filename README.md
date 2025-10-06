@@ -25,17 +25,28 @@
 ### 民航故障系统分类 & 民航维修文本系统章节分类
 这两个任务都是文本分类任务，并且来自各数据源的民航维修文本基本都是以飞机系统为章节进行组织，因此两个任务的标签体系都一样。
 
-标签体系：
+标签体系如下图所示：
+<details>
+<summary>两个任务基本一致的标签体系(点击查看图片)</summary>
 <p align="center"> <img src="images/label.png" style="width: 100%;" id="title-icon"></p>
+</details>
 
 对于民航故障系统分类，只需要按照[机务在线](https://www.airacm.com/thread/103/) 已经分好的飞机系统 tag 进行抓取，并从其中过滤出我们需要的关于飞机故障描述的帖子；而对于文本系统章节分类，只需要在不同系统章节目录和对应页码文本采样即可。
 
+<details>
+<summary>故障&文本系统分类监督数据(点击查看图片)</summary>
 <p align="center"> <img src="images/classification.png" style="width: 100%;" id="title-icon"></p>
+</details>
+
 
 ### 民航故障描述与排故手册条目匹配
 
 对于此任务，依然可以按照[机务在线](https://www.airacm.com/read/391864/) 已经分好的飞机系统 tag 进行抓取，并从其中过滤出我们需要的关于飞机故障描述并附带具体手册排故条目的帖子。而 FIM 或者 TSM 的排故手册，也正是按照“系统章节号-子系统编号-任务号”来组织，很快便能将二者对应上。
+
+<details>
+<summary>故障描述与手册条目匹配监督数据(点击查看图片)</summary>
 <p align="center"> <img src="images/match.png" style="width: 100%;" id="title-icon"></p>
+</details>
 
 ### 民航维修执照及上岗考试的学习 & 领域知识问答
 
