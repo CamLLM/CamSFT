@@ -9,13 +9,18 @@
 此外，我们清楚，大模型的监督对齐阶段，主要是激发 LLM 在预训练或者持续预训练阶段学习到的知识。因此，我们在上述指令任务集 Schema 的约束下，从与[预训练同源的数据源](https://github.com/CamLLM/CamCPT/tree/main?tab=readme-ov-file#%E9%A2%84%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86)中挖掘监督对齐数据。
 
 
-## 监督微调数据构建
+## 监督微调数据源构建
 ### 民航维修领域中英翻译
 针对此任务，有相当量的民航维修领域的中英双语对齐语料可以利用，从词语、短语、句子到段落，甚至篇章粒度。再结合“中英翻译任务”的真实使用环境，构建多样的、丰富的 prompt 指令即可。具体做法参照[之前类似工作](https://codeaspoetry.github.io/2023/07/01/sft_translate/)。
 
 > **Note：**
 > [民航英语教材-辞典-对齐术语 PDF 目录](https://github.com/CamLLM/CamCPT/tree/main/pt_data_collect/%E6%B0%91%E8%88%AA%E8%8B%B1%E8%AF%AD%E6%95%99%E6%9D%90%26%E8%BE%9E%E5%85%B8%26%E5%AF%B9%E9%BD%90%E6%9C%AF%E8%AF%AD)
+
+<details>
+<summary>民航中英对齐双语数据(点击查看图片)</summary>
 <p align="center"> <img src="images/translation.png" style="width: 85%;" id="title-icon"></p>
+</details> 
+
 
 ### 民航故障系统分类 & 民航维修文本系统章节分类
 这两个任务都是文本分类任务，并且来自各数据源的民航维修文本基本都是以飞机系统为章节进行组织，因此两个任务的标签体系都一样。
@@ -49,7 +54,10 @@
 <p align="center"> <img src="images/fim.png" style="width: 100%;" id="title-icon"></p>
 
 ### 通用领域的基本问答(包括模型人设)
-pass
+此数据源网上开源甚多，在 huggerface 或者 modelscope 上开源的指令问答 SFT 数据集。再加上希望模型关于自身人设能给出合理的预期答案，我们加以建设，最终控制好比例，随着上述几个任务一起喂入模型进行指令监督训练。
+
+## 指令(prompt) & 思维链(CoT)构建 
+
 
 
 
