@@ -21,26 +21,32 @@
 这两个任务都是文本分类任务，并且来自各数据源的民航维修文本基本都是以飞机系统为章节进行组织，因此两个任务的标签体系都一样。
 
 标签体系：
-<p align="center"> <img src="images/label.png" style="width: 85%;" id="title-icon"></p>
+<p align="center"> <img src="images/label.png" style="width: 100%;" id="title-icon"></p>
 
 对于民航故障系统分类，只需要按照[机务在线](https://www.airacm.com/thread/103/) 已经分好的飞机系统 tag 进行抓取，并从其中过滤出我们需要的关于飞机故障描述的帖子；而对于文本系统章节分类，只需要在不同系统章节目录和对应页码文本采样即可。
 
-<p align="center"> <img src="images/classification.png" style="width: 85%;" id="title-icon"></p>
+<p align="center"> <img src="images/classification.png" style="width: 100%;" id="title-icon"></p>
 
 ### 民航故障描述与排故手册条目匹配
-pass
 
-### 涉及民航维修执照资格及上岗考试的学习及答题任务
-pass
+对于此任务，依然可以按照[机务在线](https://www.airacm.com/read/391864/) 已经分好的飞机系统 tag 进行抓取，并从其中过滤出我们需要的关于飞机故障描述并附带具体手册排故条目的帖子。而 FIM 或者 TSM 的排故手册，也正是按照“系统章节号-子系统编号-任务号”来组织，很快便能将二者对应上。
+<p align="center"> <img src="images/match.png" style="width: 100%;" id="title-icon"></p>
 
-### 民航维修领域的知识问答
-pass
+### 民航维修执照及上岗考试的学习 & 领域知识问答
+
+针对这两个 QA 任务，既可以通过抓取 [机务在线](https://www.airacm.com/) 并筛选高质量的问答对来获取，也可以利用高质量教材的目录和大小标题以及对应的正文内容构建，还可以利用大模型数据合成，将高质量的教材文本块作为答案 A 送入，通过 prompt 指令获取问题 Q 并从中筛选。
+<p align="center"> <img src="images/qa.png" style="width: 100%;" id="title-icon"></p>
 
 ### 民航维修基于排故树的推理问答
-pass
+针对此任务，民航维修的排故树构建成本是高昂的，当缺乏维修工程师支持时，基本是不太可能的。然而，当我们积累了排故案例，手册，教材等等数据源，跨源对齐来自动构建出高质量的树结构样本数据，也是很有希望的。相对于构建整棵树，从更多的排故数据中，构建一条从根节点到叶子结点的逻辑排故路径是容易的。只需要借助大模型的抽取能力，按照时序和排故逻辑抽取出来。当发现多条路径有共同的节点，便可以合并成一颗排故树。
+<p align="center"> <img src="images/tree.png" style="width: 100%;" id="title-icon"></p>
 
 ### 民航维修给出建议排故方案
-pass
+此任务对模型能力的要求是以上述几个任务为基础的，要求模型在给出民航飞机故障描述时，会分类到相关系统，获取到章节系统的文本，匹配到可能的手册上排故条目等，也包括相似的排故案例参考等。不管是[机务在线](https://www.airacm.com/)还是民航维修相关的维修案例总结等，都有相当量的数据样本。数据展示如图，[具体来源点击在此](https://www.airacm.com/read/408070/)。
+<p align="center"> <img src="images/repair_advice.png" style="width: 100%;" id="title-icon"></p>
+
+至于如何让模型看懂排故手册，如 FIM 、TSM 等，也有相关的数据可以利用起来，甚至可以用来指导构建 prompt 指令。
+<p align="center"> <img src="images/fim.png" style="width: 100%;" id="title-icon"></p>
 
 ### 通用领域的基本问答(包括模型人设)
 pass
