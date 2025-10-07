@@ -106,3 +106,17 @@
 
 确定推理模式后，我们可以获取开源的包含思维链的SFT推理数据，从中挑选出高质量的类似目标模式的数据，也可以蒸馏 DeepSeek-R1 的数据，甚至可以用大模型结合前一章节各种任务的监督数据，自动构建出符合目标推理模式的思维链(COT)数据。
 
+## 监督微调模型实验
+
+### 探索性实验
+#### 实验一：自动合成的目标溯因推理模式COT数据的有效性验证
+
+* 数据集：[qwen3_training_data_1000_items.jsonl](data/qwen3_training_data_1000_items.jsonl)
+* 监督微调训练脚本
+    * 以 Qwen3-32B 为代表的 Dense 模型的 [Lora 微调](scripts/qwen3_lora-32B.sh)
+    * 以 Qwen3-235B-A22B 为代表的 MoE 模型的[Lora 微调](scripts/qwen3_moe_lora_235B.sh)
+    * 以 Qwen3-30B-A3B 为代表的 MoE 模型的[全参 SFT 微调](scripts/qwen3_moe_full.sh)和[Lora 微调](scripts/qwen3_moe_lora.sh)
+* 实验结果：
+    1. 在 Dense 模型的 Lora 微调下，指标提升了 绝对 7 个百分点，证明自动合成目标推理模式数据的有效性
+    2. 在 MoE 模型上的 Lora 微调接近没有提升，分析原因推测是“稀疏专家”独立性更强，统一的加个 Lora 层，不仅无益，可能有害，应该单独加在某几个与目标任务更相关的专家上，或者采用“专家监督微调”
+    3. 更强大的专家监督微调技术框架可以参考 DeepSeek 之前开源的 [ESFT](https://github.com/deepseek-ai/ESFT)
