@@ -89,10 +89,8 @@
 
 众所周知，民航排故背后蕴含着大量逻辑推理。逻辑推理主要有演绎、归纳、溯因等几种模式。
 
-<details>
-<summary>逻辑推理几种模式(点击查看图片)</summary>
 <p align="center"> <img src="images/reason.png" style="width: 100%;" id="title-icon"></p>
-</details>
+
 
 而排故场景属于其中的溯因推理，对与溯因推理，往往有如下的思维步骤：
 1. 观察现象：首先，观察到一个需要解释的现象。
