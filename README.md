@@ -110,6 +110,7 @@
 #### 实验一：自动合成的目标溯因推理模式COT数据的有效性验证
 
 * 数据集：[qwen3_training_data_1000_items.jsonl](data/qwen3_training_data_1000_items.jsonl)
+* 实验算力估计：[32b&72b模型Lora微调](docs/32b&72b模型Lora微调.pdf)
 * 监督微调训练脚本
     * 以 Qwen3-32B 为代表的 Dense 模型的 [Lora 微调](scripts/qwen3_lora-32B.sh)
     * 以 Qwen3-235B-A22B 为代表的 MoE 模型的[Lora 微调](scripts/qwen3_moe_lora_235B.sh)
